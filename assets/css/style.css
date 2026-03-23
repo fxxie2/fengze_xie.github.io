@@ -11,20 +11,21 @@
 }
 
 :root {
-  --color-bg: #0f0f13;
-  --color-bg-card: #1a1a22;
-  --color-bg-card-hover: #22222e;
-  --color-surface: #25253a;
-  --color-text: #e8e8ef;
-  --color-text-muted: #9a9ab0;
-  --color-accent: #6c8cff;
-  --color-accent-soft: rgba(108, 140, 255, 0.12);
-  --color-accent-glow: rgba(108, 140, 255, 0.25);
-  --color-conference: #4ecdc4;
-  --color-journal: #ff6b9d;
-  --color-preprint: #ffd166;
-  --color-award: #ffb347;
-  --color-border: rgba(255, 255, 255, 0.06);
+  --color-bg: #fafaf9;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f5f5f3;
+  --color-surface: #eeedeb;
+  --color-text: #1a1a1a;
+  --color-text-muted: #76777B;          /* PMS Cool Gray 9 */
+  --color-accent: #003B4C;              /* PMS 548c — deep teal for links */
+  --color-accent-soft: rgba(0, 59, 76, 0.06);
+  --color-accent-glow: rgba(0, 59, 76, 0.10);
+  --color-highlight: #FF6C0C;           /* Caltech Orange PMS 1585c */
+  --color-conference: #005851;           /* PMS 3292c — deep green */
+  --color-journal: #7A303F;             /* PMS 195c — deep maroon */
+  --color-preprint: #644B78;            /* PMS 668c — deep purple */
+  --color-award: #c45a00;              /* dark orange for text legibility */
+  --color-border: rgba(0, 0, 0, 0.08);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Source Serif 4', 'Georgia', serif;
   --max-width: 1100px;
@@ -55,7 +56,7 @@ a {
 }
 
 a:hover {
-  color: #9db5ff;
+  color: #005851;
 }
 
 img, video {
@@ -76,7 +77,7 @@ img, video {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(15, 15, 19, 0.8);
+  background: rgba(248, 249, 250, 0.85);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--color-border);
@@ -84,8 +85,8 @@ img, video {
 }
 
 #navbar.scrolled {
-  background: rgba(15, 15, 19, 0.95);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(248, 249, 250, 0.97);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 .nav-inner {
@@ -168,17 +169,42 @@ img, video {
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 8px;
-  background: linear-gradient(135deg, #fff 0%, #c8d6ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #003B4C;
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: var(--color-accent);
+  color: var(--color-highlight);
   font-weight: 500;
   margin-bottom: 4px;
+}
+
+.inline-logo {
+  display: inline-block;
+  height: 1.1em;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 3px;
+  border-radius: 2px;
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.hero-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+
+.hero-logo:hover {
+  opacity: 1;
 }
 
 .hero-affiliation {
@@ -253,7 +279,7 @@ img, video {
   object-position: center top;
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* ---------- Section Titles ---------- */
@@ -264,7 +290,7 @@ img, video {
   letter-spacing: -0.02em;
   margin-bottom: 40px;
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-highlight);
   display: inline-block;
 }
 
@@ -273,7 +299,7 @@ section {
 }
 
 section:nth-child(even) {
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(0, 0, 0, 0.015);
 }
 
 /* ---------- Research Category Subheadings ---------- */
@@ -285,7 +311,7 @@ section:nth-child(even) {
   margin-top: 40px;
   margin-bottom: 24px;
   padding-left: 4px;
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--color-highlight);
   padding-left: 14px;
 }
 
@@ -307,15 +333,15 @@ section:nth-child(even) {
 }
 
 .project-card:hover {
-  border-color: rgba(108, 140, 255, 0.2);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 60px var(--color-accent-glow);
+  border-color: rgba(0, 59, 76, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
 .project-media {
   position: relative;
   overflow: hidden;
-  background: #111;
+  background: #f0efed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,7 +443,7 @@ section:nth-child(even) {
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .authors {
@@ -448,21 +474,21 @@ section:nth-child(even) {
 }
 
 .venue-badge.conference {
-  background: rgba(78, 205, 196, 0.15);
+  background: rgba(0, 88, 81, 0.08);
   color: var(--color-conference);
-  border: 1px solid rgba(78, 205, 196, 0.3);
+  border: 1px solid rgba(0, 88, 81, 0.2);
 }
 
 .venue-badge.journal {
-  background: rgba(255, 107, 157, 0.15);
+  background: rgba(122, 48, 63, 0.08);
   color: var(--color-journal);
-  border: 1px solid rgba(255, 107, 157, 0.3);
+  border: 1px solid rgba(122, 48, 63, 0.2);
 }
 
 .venue-badge.preprint {
-  background: rgba(255, 209, 102, 0.15);
+  background: rgba(100, 75, 120, 0.08);
   color: var(--color-preprint);
-  border: 1px solid rgba(255, 209, 102, 0.3);
+  border: 1px solid rgba(100, 75, 120, 0.2);
 }
 
 .award-badge {
@@ -470,8 +496,8 @@ section:nth-child(even) {
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--color-award);
-  background: rgba(255, 179, 71, 0.1);
-  border: 1px solid rgba(255, 179, 71, 0.25);
+  background: rgba(196, 90, 0, 0.07);
+  border: 1px solid rgba(196, 90, 0, 0.18);
   padding: 2px 8px;
   border-radius: 4px;
   margin-bottom: 8px;
@@ -511,34 +537,34 @@ section:nth-child(even) {
 .btn-video {
   color: var(--color-conference);
   border-color: var(--color-conference);
-  background: rgba(78, 205, 196, 0.1);
+  background: rgba(0, 88, 81, 0.05);
 }
 
 .btn-video:hover {
   background: var(--color-conference);
-  color: #111;
+  color: #fff;
 }
 
 .btn-web {
   color: var(--color-journal);
   border-color: var(--color-journal);
-  background: rgba(255, 107, 157, 0.1);
+  background: rgba(122, 48, 63, 0.05);
 }
 
 .btn-web:hover {
   background: var(--color-journal);
-  color: #111;
+  color: #fff;
 }
 
 .btn-code {
   color: var(--color-preprint);
   border-color: var(--color-preprint);
-  background: rgba(255, 209, 102, 0.1);
+  background: rgba(100, 75, 120, 0.05);
 }
 
 .btn-code:hover {
   background: var(--color-preprint);
-  color: #111;
+  color: #fff;
 }
 
 /* ---------- Publications ---------- */
@@ -585,7 +611,7 @@ section:nth-child(even) {
 }
 
 .pub-list li:hover {
-  border-color: rgba(108, 140, 255, 0.15);
+  border-color: rgba(0, 59, 76, 0.12);
   background: var(--color-bg-card-hover);
 }
 
@@ -618,8 +644,8 @@ section:nth-child(even) {
 }
 
 .teaching-card:hover {
-  border-color: rgba(108, 140, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 59, 76, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .teaching-term {
@@ -627,7 +653,7 @@ section:nth-child(even) {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-highlight);
   margin-bottom: 8px;
 }
 
@@ -682,7 +708,7 @@ section:nth-child(even) {
 }
 
 .award-item:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .award-item:hover {
@@ -738,17 +764,17 @@ section:nth-child(even) {
 /* ---------- Education ---------- */
 .education-timeline {
   position: relative;
-  padding-left: 40px;
+  padding-left: 52px;
 }
 
 .education-timeline::before {
   content: '';
   position: absolute;
-  left: 11px;
+  left: 17px;
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
+  background: linear-gradient(to bottom, var(--color-highlight), var(--color-border));
 }
 
 .edu-item {
@@ -764,13 +790,22 @@ section:nth-child(even) {
 
 .edu-icon {
   position: absolute;
-  left: -40px;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  color: var(--color-accent);
+  left: -48px;
+  top: 4px;
+  width: 36px;
+  height: 36px;
   background: var(--color-bg);
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-icon img {
+  width: 36px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 3px;
 }
 
 .edu-content {
@@ -783,8 +818,8 @@ section:nth-child(even) {
 }
 
 .edu-content:hover {
-  border-color: rgba(108, 140, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 59, 76, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .edu-dates {
@@ -792,7 +827,7 @@ section:nth-child(even) {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-highlight);
   margin-bottom: 6px;
 }
 
@@ -943,7 +978,7 @@ footer p {
   }
 
   .education-timeline {
-    padding-left: 32px;
+    padding-left: 48px;
   }
 }
 
@@ -954,7 +989,7 @@ footer p {
     top: 64px;
     left: 0;
     right: 0;
-    background: rgba(15, 15, 19, 0.98);
+    background: rgba(248, 249, 250, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 16px 24px;
