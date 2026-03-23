@@ -47,14 +47,34 @@ document.addEventListener('DOMContentLoaded', () => {
       dirTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
-      if (dir === 'all') {
-        cards.forEach(c => c.style.display = '');
-        categoryHeadings.forEach(h => h.style.display = '');
-      } else {
-        cards.forEach(c => {
-          c.style.display = c.dataset.direction === dir ? '' : 'none';
-        });
-        categoryHeadings.forEach(h => h.style.display = 'none');
+      const showAll = dir === 'all';
+
+      cards.forEach(c => {
+        const visible = showAll || c.dataset.direction === dir;
+        c.style.display = visible ? '' : 'none';
+
+        // Clear any GSAP inline styles so revealed cards aren't stuck at opacity:0
+        if (visible) {
+          c.style.opacity = '';
+          c.style.transform = '';
+        }
+
+        // Pause hidden videos, resume visible ones
+        const vid = c.querySelector('video');
+        if (vid) {
+          if (visible) {
+            vid.play().catch(() => {});
+          } else {
+            vid.pause();
+          }
+        }
+      });
+
+      categoryHeadings.forEach(h => h.style.display = showAll ? '' : 'none');
+
+      // Refresh ScrollTrigger positions after layout change
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
       }
     });
   });
@@ -136,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 60, opacity: 0, duration: 0.8,
         delay: i * 0.08,
         ease: 'power3.out',
+        clearProps: 'opacity,transform',
         scrollTrigger: { trigger: card, start: 'top 85%' }
       });
     });
